@@ -1,0 +1,26 @@
+_target_: src.models.dimis_module.DIMISLitModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.001
+  weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.1
+  patience: 10
+
+criterion:
+  _target_: torch.nn.MSELoss
+
+net:
+  _target_: src.models.components.resmlp.ResMLP
+  hidden_factor: 1
+  depth: 1
+  layerscale_init: 0.2
+
+# compile model for faster training with pytorch 2.0
+compile: false

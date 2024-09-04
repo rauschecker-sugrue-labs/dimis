@@ -1,0 +1,10 @@
+_target_: src.data.oasis_datamodule.OasisTissueDataModule
+dataset_dir: ${paths.data_dir}/OASIS/
+batch_size: 4 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+input_domain: 'kspace'
+label_domain: 'kspace'
+resampling_target_size: 3
+crop_size: [64, 64, 64]
+train_val_test_split: [0.8, 0.1, 0.1]
+num_workers: 16
+pin_memory: False
